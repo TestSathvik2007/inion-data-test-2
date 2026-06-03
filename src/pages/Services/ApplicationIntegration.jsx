@@ -37,9 +37,9 @@ const steps = [
 
 const coreTech = [
   { name: "Kafka", tag: "Event Streaming", color: "rgba(20,184,166,.15)" },
-  { name: "REST / GraphQL", tag: "API Layer", color: "rgba(34,197,94,.12)" },
+  { name: "REST / GraphQL", tag: "API Layer", color: "var(--accent-glow)" },
   { name: "Docker + K8s", tag: "Infra", color: "rgba(20,184,166,.1)" },
-  { name: "AWS / GCP", tag: "Cloud", color: "rgba(34,197,94,.1)" },
+  { name: "AWS / GCP", tag: "Cloud", color: "var(--accent-glow)" },
 ];
 
 const tools = ["Node.js", "Python", "RabbitMQ", "Redis", "PostgreSQL", "Elasticsearch", "Terraform", "GitHub Actions"];
@@ -79,7 +79,7 @@ const styles = `
   background: conic-gradient(
     from 0deg,
     rgba(20,184,166,.18),
-    rgba(34,197,94,.08) 30%,
+    var(--accent-glow) 30%,
     transparent 50%,
     rgba(20,184,166,.12) 70%,
     rgba(20,184,166,.18) 100%
@@ -206,7 +206,7 @@ const styles = `
   position:absolute;
   bottom:0; left:0; right:0;
   height:2px;
-  background:linear-gradient(90deg,#14b8a6,#22c55e);
+  background:linear-gradient(90deg,var(--teal),var(--accent));
   transform:scaleX(0);
   transition:.3s;
   transform-origin:left;
@@ -250,7 +250,7 @@ const styles = `
   position:absolute;
   left:0; top:0; bottom:0;
   width:3px;
-  background:linear-gradient(180deg,#14b8a6,#22c55e);
+  background:linear-gradient(180deg,var(--teal),var(--accent));
   transform:scaleY(0);
   transform-origin:bottom;
   transition:transform .3s ease;
@@ -296,7 +296,7 @@ export default function ApplicationIntegration() {
           <div>
             <div className="kicker reveal">Service </div>
             <h1 className="h1 reveal" style={{ marginTop: 14 }}>
-              <span style={{ background: "linear-gradient(135deg,#14b8a6,#22c55e)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+              <span style={{ background: "var(--grad-text)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
                 Application Design, Development and Integration
               </span>
             </h1>

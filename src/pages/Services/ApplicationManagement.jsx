@@ -86,7 +86,7 @@ const styles = `
 .am-uptime-tick--incident { background:rgba(239,68,68,.6) !important; }
 @keyframes am-tick-in { from{transform:scaleY(0);opacity:0} to{transform:scaleY(1);opacity:1} }
 .am-dash-status { display:flex; align-items:center; gap:6px; font-size:12px; color:var(--muted) }
-.am-dash-dot { width:8px; height:8px; border-radius:50%; background:#22c55e; animation:am-blink 2s ease-in-out infinite }
+.am-dash-dot { width:8px; height:8px; border-radius:50%; background:var(--accent); animation:am-blink 2s ease-in-out infinite }
 @keyframes am-blink { 0%,100%{opacity:1} 50%{opacity:.4} }
 
 /* LIFECYCLE HORIZONTAL TIMELINE */
@@ -188,7 +188,7 @@ const styles = `
   position:absolute;
   left:0; top:0; bottom:0;
   width:3px;
-  background:linear-gradient(180deg,#14b8a6,#22c55e);
+  background:linear-gradient(180deg, var(--teal), var(--accent));
   transform:scaleY(0);
   transform-origin:bottom;
   transition:transform .3s ease;
@@ -226,7 +226,7 @@ export default function ApplicationManagement() {
           <div>
             <div className="kicker reveal">Service</div>
             <h1 className="h1 reveal" style={{ marginTop: 14 }}>
-              <span style={{ background: "linear-gradient(135deg,#14b8a6,#22c55e)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+              <span style={{ background: "var(--grad-brand)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
                 Application Management and Support
               </span>
             </h1>

@@ -94,7 +94,7 @@ const styles = `
 .pm-metric-card:hover { border-color:rgba(20,184,166,.3); background:rgba(20,184,166,.05) }
 .pm-metric-val {
   font-size:46px; font-weight:800;
-  background:linear-gradient(135deg,#14b8a6,#22c55e);
+  background:var(--grad-brand);
   -webkit-background-clip:text; -webkit-text-fill-color:transparent;
   line-height:1;
 }
@@ -276,7 +276,7 @@ const styles = `
   position:absolute;
   left:0; top:0; bottom:0;
   width:3px;
-  background:linear-gradient(180deg,#14b8a6,#22c55e);
+  background:linear-gradient(180deg, var(--teal), var(--accent));
   transform:scaleY(0);
   transform-origin:bottom;
   transition:transform .3s ease;
@@ -313,7 +313,7 @@ export default function ProjectManagement() {
           <div>
             <div className="kicker reveal">Service</div>
             <h1 className="h1 reveal" style={{ marginTop: 14 }}>
-              <span style={{ background: "linear-gradient(135deg,#14b8a6,#22c55e)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+              <span style={{ background: "var(--grad-brand)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
                 Project Management
               </span>
             </h1>

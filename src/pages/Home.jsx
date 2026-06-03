@@ -2,11 +2,11 @@ import { Link } from "react-router-dom";
 import { useEffect, useState, useRef, useCallback } from "react";
 
 /* ── SERVICE IMAGES ── */
-import service2  from "../assets/images/application_integration.png";
-import service5  from "../assets/images/project_management.png";
-import service6  from "../assets/images/consulting_services.png";
-import service8  from "../assets/images/operational_efficiency.png";
-import service9  from "../assets/images/fast_growth.png";
+import service2 from "../assets/images/application_integration.png";
+import service5 from "../assets/images/project_management.png";
+import service6 from "../assets/images/consulting_services.png";
+import service8 from "../assets/images/operational_efficiency.png";
+import service9 from "../assets/images/fast_growth.png";
 import service11 from "../assets/images/dataengineering.jpg";
 import service12 from "../assets/images/staffing.png";
 
@@ -78,39 +78,13 @@ const allItems = [
 const pageStyles = `
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
-  :root {
-    --bg: #07100e;
-    --bg-2: #0c1a16;
-    --surface: rgba(255,255,255,0.04);
-    --surface-2: rgba(255,255,255,0.07);
-    --text: #dff0e8;
-    --muted: #7a9e8e;
-    --border: rgba(255,255,255,0.07);
-    --border-2: rgba(255,255,255,0.12);
-    --teal: #14b8a6;
-    --teal-2: #2dd4bf;
-    --teal-d: #0d9488;
-    --accent: #22c55e;
-    --shadow: 0 24px 80px rgba(0,0,0,0.55);
-    --shadow-soft: 0 8px 32px rgba(0,0,0,0.30);
-    --radius: 20px;
-    --radius-sm: 14px;
-    --radius-pill: 999px;
-    --container: min(1400px,100%);
+  .container {
     --pad: 40px;
-    --font: 'Inter', system-ui, sans-serif;
-    --ease: cubic-bezier(0.22,1,0.36,1);
-    --dur: 0.25s;
+    width: 100%;
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 clamp(16px, 4vw, var(--pad));
   }
-
-  *, *::before, *::after { box-sizing: border-box; }
-  html { height: 100%; scroll-behavior: smooth; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
-  body { margin: 0; font-family: var(--font); line-height: 1.6; color: var(--text); background: var(--bg); overflow-x: hidden; min-height: 100%; }
-  body::before { content: ''; position: fixed; inset: 0; background: radial-gradient(ellipse 900px 600px at 10% 0%, rgba(20,184,166,0.12), transparent 70%), radial-gradient(ellipse 700px 500px at 90% 10%, rgba(34,197,94,0.09), transparent 70%), radial-gradient(ellipse 600px 400px at 50% 90%, rgba(20,184,166,0.06), transparent 70%); pointer-events: none; z-index: 0; }
-  body::after { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E"); pointer-events: none; z-index: 0; opacity: 0.5; }
-  a { color: inherit; text-decoration: none; }
-  button { font: inherit; cursor: pointer; }
-  img, svg { display: block; max-width: 100%; }
 
   /* LAYOUT */
   .container { width: 100%; max-width: var(--container); margin: 0 auto; padding: 0 clamp(16px, 4vw, var(--pad)); }
@@ -179,7 +153,15 @@ const pageStyles = `
   /* TYPEWRITER */
   @keyframes blinkCursor { 0%,100%{opacity:1} 50%{opacity:0} }
   .tw-cursor { display: inline-block; width: 3px; height: 0.85em; background: currentColor; margin-left: 3px; vertical-align: middle; animation: blinkCursor .75s step-end infinite; }
-  .tw-word-block { display: block; min-height: calc(1.04em * 2); overflow: hidden; }
+  .tw-word-block {
+    display: block;
+    min-height: calc(1.04em * 2);
+    overflow: hidden;
+    background: var(--grad-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
 
   /* ANIMATIONS */
   @keyframes heroFadeUp { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
@@ -245,7 +227,7 @@ const pageStyles = `
 
   /* RESPONSIVE */
   @media(max-width:960px) {
-    :root { --pad: 24px; }
+    .container { --pad: 24px; }
     .hero-grid { grid-template-columns: 1fr !important; }
     .content-two-col { grid-template-columns: 1fr !important; }
     .trust-grid { grid-template-columns: repeat(2,1fr) !important; }
@@ -253,7 +235,7 @@ const pageStyles = `
     .cta-photo { min-height: 220px !important; }
   }
   @media(max-width:640px) {
-    :root { --pad: 16px; }
+    .container { --pad: 16px; }
     .trust-grid { grid-template-columns: 1fr !important; }
     .kicker { clip-path: none; border-radius: 5px; }
     .btn-row { flex-wrap: wrap !important; }
@@ -266,6 +248,25 @@ const pageStyles = `
     .svc-card { width: calc(100vw - 64px); }
     .tw-word-block { min-height: calc(1.04em * 3); }
     .kicker { clip-path: none; border-radius: 6px; }
+  }
+
+  /* HERO CANVAS BACKGROUND & MARQUEE */
+  .hero-section-wrap {
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.65;
+  }
+  .hero-grid {
+    position: relative;
+    z-index: 1;
   }
 `;
 
@@ -499,19 +500,134 @@ function ServicesCarousel() {
 
 // ── HOME PAGE ─────────────────────────────────────────────────────────────────
 
+
 export default function Home() {
   useReveal();
   useLottieScript();
   const twWord = useTypewriter();
   const ctaRef = useRef(null);
   useBarFillOnScroll(ctaRef);
+  const canvasRef = useRef(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    let animationFrameId;
+    let width = (canvas.width = canvas.offsetWidth);
+    let height = (canvas.height = canvas.offsetHeight);
+
+    const particles = [];
+    const particleCount = Math.min(50, Math.floor((width * height) / 18000));
+    let mouse = { x: null, y: null, radius: 140 };
+
+    const handleMouseMove = (e) => {
+      const rect = canvas.getBoundingClientRect();
+      mouse.x = e.clientX - rect.left;
+      mouse.y = e.clientY - rect.top;
+    };
+
+    const handleMouseLeave = () => {
+      mouse.x = null;
+      mouse.y = null;
+    };
+
+    const handleResize = () => {
+      if (!canvas) return;
+      width = canvas.width = canvas.offsetWidth;
+      height = canvas.height = canvas.offsetHeight;
+    };
+
+    const parentSection = canvas.parentElement;
+    if (parentSection) {
+      parentSection.addEventListener("mousemove", handleMouseMove);
+      parentSection.addEventListener("mouseleave", handleMouseLeave);
+    }
+    window.addEventListener("resize", handleResize);
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.vx = (Math.random() - 0.5) * 0.4;
+        this.vy = (Math.random() - 0.5) * 0.4;
+        this.radius = Math.random() * 2 + 1;
+      }
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+
+        if (this.x < 0 || this.x > width) this.vx *= -1;
+        if (this.y < 0 || this.y > height) this.vy *= -1;
+
+        if (mouse.x !== null && mouse.y !== null) {
+          const dx = this.x - mouse.x;
+          const dy = this.y - mouse.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < mouse.radius) {
+            const force = (mouse.radius - dist) / mouse.radius;
+            this.x -= (dx / dist) * force * 1.5;
+            this.y -= (dy / dist) * force * 1.5;
+          }
+        }
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = "rgba(45, 212, 191, 0.4)";
+        ctx.fill();
+      }
+    }
+
+    for (let i = 0; i < particleCount; i++) {
+      particles.push(new Particle());
+    }
+
+    const animate = () => {
+      ctx.clearRect(0, 0, width, height);
+
+      for (let i = 0; i < particles.length; i++) {
+        particles[i].update();
+        particles[i].draw();
+
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          if (dist < 110) {
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.strokeStyle = `rgba(20, 184, 166, ${0.15 * (1 - dist / 110)})`;
+            ctx.lineWidth = 0.75;
+            ctx.stroke();
+          }
+        }
+      }
+
+      animationFrameId = requestAnimationFrame(animate);
+    };
+
+    animate();
+
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+      if (parentSection) {
+        parentSection.removeEventListener("mousemove", handleMouseMove);
+        parentSection.removeEventListener("mouseleave", handleMouseLeave);
+      }
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   return (
     <div>
       <style>{pageStyles}</style>
 
       {/* ══ HERO ══ */}
-      <section className="section">
+      <section className="section hero-section-wrap">
+        <canvas className="hero-canvas" ref={canvasRef} />
         <div className="container">
           <div className="grid grid-2 hero-grid" style={{ alignItems: "center", gap: "clamp(24px,4vw,40px)" }}>
             <div>
@@ -535,6 +651,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+
 
       {/* ══ SERVICES CAROUSEL ══ */}
       <ServicesCarousel />

@@ -141,7 +141,7 @@ export default function DataScience() {
             <div className="kicker reveal">Data Science</div>
             <h1 className="h1 reveal" style={{ marginTop: 14 }}>
               Making Your Data<br />
-              <span style={{ background: "linear-gradient(135deg,#14b8a6,#22c55e)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+              <span style={{ background: "var(--grad-brand)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
                 Work Smarter.
               </span>
             </h1>

@@ -14,38 +14,10 @@ const details = [
 const pageStyles = `
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
   
-  :root {
-    --bg:#07100e; 
-    --surface:rgba(255,255,255,0.03); 
-    --surface-2:rgba(255,255,255,0.06); 
-    --text:#dff0e8; 
-    --muted:#7a9e8e; 
-    --border:rgba(255,255,255,0.08); 
-    --border-2:rgba(255,255,255,0.15);
-    --teal:#14b8a6; 
-    --teal-2:#2dd4bf; 
-    --accent:#22c55e;
-    --grad-brand:linear-gradient(135deg,var(--teal),var(--accent));
-    --shadow-soft:0 8px 32px rgba(0,0,0,0.30);
-    --radius:16px; 
-    --radius-sm:10px;
-    --ease:cubic-bezier(0.22,1,0.36,1); 
-    --dur:0.25s;
+  .container {
+    --radius: 16px;
+    --radius-sm: 10px;
   }
-
-  *,*::before,*::after{box-sizing:border-box}
-  body{margin:0;font-family:'Inter',system-ui,sans-serif;font-size:15px;line-height:1.6;color:var(--text);background:var(--bg);overflow-x:hidden}
-  
-  body::before{
-    content:'';position:fixed;inset:0;
-    background:
-      radial-gradient(ellipse 800px 500px at 20% -10%,rgba(20,184,166,0.12),transparent 70%),
-      radial-gradient(ellipse 600px 400px at 80% 110%,rgba(34,197,94,0.08),transparent 70%);
-    pointer-events:none;z-index:0
-  }
-
-  a{color:inherit;text-decoration:none}
-  button{font:inherit;cursor:pointer}
   
   .container{width:100%;max-width:1600px;margin:0 auto;padding:0 clamp(16px,5vw,60px);position:relative;z-index:1}
   .section{padding:clamp(48px,8vw,120px) 0}
@@ -87,8 +59,10 @@ const pageStyles = `
     border-radius:var(--radius-sm);color:var(--text);font-family:inherit;font-size:15px;
     transition:all 0.2s;
   }
-  .input:focus{outline:none;border-color:var(--teal);background:rgba(20,184,166,0.05);box-shadow:0 0 0 4px rgba(20,184,166,0.1)}
+  .input:focus{outline:none;border-color:var(--accent);background:var(--accent-glow);box-shadow:0 0 0 4px var(--accent-glow)}
   .input::placeholder{color:rgba(255,255,255,0.3)}
+  select.input{appearance:none;-webkit-appearance:none;-moz-appearance:none}
+  select.input option{background:#0d1414;color:#ffffff}
 
   /* 2-col grid → 1-col on small mobile */
   .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
@@ -130,7 +104,7 @@ const pageStyles = `
 
   /* CTA */
   .cta-box{
-    background:linear-gradient(135deg,rgba(20,184,166,0.15),rgba(34,197,94,0.05));
+    background:var(--grad-brand-soft);
     border:1px solid rgba(20,184,166,0.2);border-radius:var(--radius);
     padding:clamp(28px,5vw,56px);text-align:center;
   }
@@ -158,7 +132,7 @@ const pageStyles = `
   /* Success */
   .success-wrap{text-align:center;padding:clamp(32px,6vw,60px) 20px}
   .success-icon{
-    width:64px;height:64px;background:rgba(20,184,166,0.15);border-radius:50%;
+    width:64px;height:64px;background:var(--accent-glow);border-radius:50%;
     display:flex;align-items:center;justify-content:center;margin:0 auto 24px;
   }
 
@@ -255,7 +229,7 @@ export default function Contact() {
                   </div>
                   <div className="input-group">
                     <label className="input-label">Topic</label>
-                    <select name="topic" required value={form.topic} onChange={set("topic")} className="input" style={{ appearance: "none" }}>
+                    <select name="topic" required value={form.topic} onChange={set("topic")} className="input">
                       <option value="" disabled>Select an area of interest...</option>
                       {topics.map((t) => <option key={t} value={t}>{t}</option>)}
                     </select>
@@ -282,7 +256,7 @@ export default function Contact() {
             ) : (
               <div className="success-wrap">
                 <div className="success-icon">
-                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M20 6L9 17l-5-5" />
                   </svg>
                 </div>

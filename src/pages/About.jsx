@@ -7,7 +7,7 @@ import { useEffect, useRef } from "react";
 const IllustrationExpertise = () => (
   <svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg" style={{width:'100%',maxWidth:220,height:'auto'}}>
     <defs>
-      <linearGradient id="eg1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="#14b8a6"/><stop offset="100%" stopColor="#22c55e"/></linearGradient>
+      <linearGradient id="eg1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="#14b8a6"/><stop offset="100%" stopColor="var(--accent)"/></linearGradient>
       <linearGradient id="eg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="#0d9488" stopOpacity="0.5"/><stop offset="100%" stopColor="#14b8a6" stopOpacity="0.1"/></linearGradient>
     </defs>
     {/* Globe */}
@@ -20,9 +20,9 @@ const IllustrationExpertise = () => (
     <circle cx="78" cy="58" r="4" fill="#14b8a6"/>
     <line x1="78" y1="58" x2="78" y2="44" stroke="#14b8a6" strokeWidth="1.5"/>
     <circle cx="78" cy="43" r="2.5" fill="#2dd4bf"/>
-    <circle cx="118" cy="72" r="4" fill="#22c55e"/>
-    <line x1="118" y1="72" x2="118" y2="58" stroke="#22c55e" strokeWidth="1.5"/>
-    <circle cx="118" cy="57" r="2.5" fill="#4ade80"/>
+    <circle cx="118" cy="72" r="4" fill="var(--accent)"/>
+    <line x1="118" y1="72" x2="118" y2="58" stroke="var(--accent)" strokeWidth="1.5"/>
+    <circle cx="118" cy="57" r="2.5" fill="var(--accent-2)"/>
     <circle cx="92" cy="80" r="3.5" fill="#14b8a6" fillOpacity="0.7"/>
     <line x1="92" y1="80" x2="92" y2="68" stroke="#14b8a6" strokeWidth="1.2"/>
     <circle cx="92" cy="67" r="2" fill="#2dd4bf" fillOpacity="0.8"/>
@@ -35,7 +35,7 @@ const IllustrationExpertise = () => (
 const IllustrationCustomization = () => (
   <svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg" style={{width:'100%',maxWidth:220,height:'auto'}}>
     <defs>
-      <linearGradient id="cg1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="#14b8a6"/><stop offset="100%" stopColor="#22c55e"/></linearGradient>
+      <linearGradient id="cg1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="#14b8a6"/><stop offset="100%" stopColor="var(--accent)"/></linearGradient>
     </defs>
     {/* Sliders */}
     <rect x="30" y="36" width="140" height="10" rx="5" fill="rgba(20,184,166,0.1)" stroke="rgba(20,184,166,0.25)" strokeWidth="1"/>
@@ -46,7 +46,7 @@ const IllustrationCustomization = () => (
     <rect x="30" y="62" width="140" height="10" rx="5" fill="rgba(20,184,166,0.1)" stroke="rgba(20,184,166,0.25)" strokeWidth="1"/>
     <rect x="30" y="62" width="55" height="10" rx="5" fill="url(#cg1)" fillOpacity="0.35"/>
     <circle cx="85" cy="67" r="9" fill="#07100e" stroke="url(#cg1)" strokeWidth="2"/>
-    <circle cx="85" cy="67" r="4" fill="#22c55e"/>
+    <circle cx="85" cy="67" r="4" fill="var(--accent)"/>
 
     <rect x="30" y="88" width="140" height="10" rx="5" fill="rgba(20,184,166,0.1)" stroke="rgba(20,184,166,0.25)" strokeWidth="1"/>
     <rect x="30" y="88" width="115" height="10" rx="5" fill="url(#cg1)" fillOpacity="0.35"/>
@@ -55,7 +55,7 @@ const IllustrationCustomization = () => (
 
     {/* Labels */}
     <rect x="30" y="22" width="36" height="8" rx="2" fill="rgba(20,184,166,0.15)"/>
-    <rect x="30" y="48" width="28" height="8" rx="2" fill="rgba(34,197,94,0.12)"/>
+    <rect x="30" y="48" width="28" height="8" rx="2" fill="var(--accent-glow)"/>
     <rect x="30" y="74" width="40" height="8" rx="2" fill="rgba(20,184,166,0.15)"/>
   </svg>
 );
@@ -63,7 +63,7 @@ const IllustrationCustomization = () => (
 const IllustrationAI = () => (
   <svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg" style={{width:'100%',maxWidth:220,height:'auto'}}>
     <defs>
-      <linearGradient id="ag1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="#14b8a6"/><stop offset="100%" stopColor="#22c55e"/></linearGradient>
+      <linearGradient id="ag1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="#14b8a6"/><stop offset="100%" stopColor="var(--accent)"/></linearGradient>
       <filter id="aglow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
     </defs>
     {/* Central brain/chip */}
@@ -80,21 +80,21 @@ const IllustrationAI = () => (
     {/* Connector pins left */}
     <line x1="56" y1="55" x2="72" y2="55" stroke="#2dd4bf" strokeWidth="1.5"/><circle cx="54" cy="55" r="3" fill="#2dd4bf"/>
     <line x1="56" y1="70" x2="72" y2="70" stroke="#14b8a6" strokeWidth="1.5"/><circle cx="54" cy="70" r="3" fill="#14b8a6"/>
-    <line x1="56" y1="85" x2="72" y2="85" stroke="#22c55e" strokeWidth="1.5"/><circle cx="54" cy="85" r="3" fill="#22c55e"/>
+    <line x1="56" y1="85" x2="72" y2="85" stroke="var(--accent)" strokeWidth="1.5"/><circle cx="54" cy="85" r="3" fill="var(--accent)"/>
     {/* Connector pins right */}
     <line x1="128" y1="55" x2="144" y2="55" stroke="#2dd4bf" strokeWidth="1.5"/><circle cx="146" cy="55" r="3" fill="#2dd4bf"/>
     <line x1="128" y1="70" x2="144" y2="70" stroke="#14b8a6" strokeWidth="1.5"/><circle cx="146" cy="70" r="3" fill="#14b8a6"/>
-    <line x1="128" y1="85" x2="144" y2="85" stroke="#22c55e" strokeWidth="1.5"/><circle cx="146" cy="85" r="3" fill="#22c55e"/>
+    <line x1="128" y1="85" x2="144" y2="85" stroke="var(--accent)" strokeWidth="1.5"/><circle cx="146" cy="85" r="3" fill="var(--accent)"/>
     {/* Orbiting dots */}
     <circle cx="100" cy="28" r="3.5" fill="#14b8a6" fillOpacity="0.6"/>
-    <circle cx="100" cy="112" r="3.5" fill="#22c55e" fillOpacity="0.6"/>
+    <circle cx="100" cy="112" r="3.5" fill="var(--accent)" fillOpacity="0.6"/>
   </svg>
 );
 
 const IllustrationReliability = () => (
   <svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg" style={{width:'100%',maxWidth:220,height:'auto'}}>
     <defs>
-      <linearGradient id="rg1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="#14b8a6"/><stop offset="100%" stopColor="#22c55e"/></linearGradient>
+      <linearGradient id="rg1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="#14b8a6"/><stop offset="100%" stopColor="var(--accent)"/></linearGradient>
     </defs>
     {/* Shield */}
     <path d="M100 20 L140 36 L140 72 C140 96 100 116 100 116 C100 116 60 96 60 72 L60 36 Z" fill="rgba(20,184,166,0.07)" stroke="url(#rg1)" strokeWidth="1.8" strokeLinejoin="round"/>
@@ -105,7 +105,7 @@ const IllustrationReliability = () => (
     <circle cx="100" cy="68" r="28" stroke="#14b8a6" strokeWidth="0.5" strokeDasharray="4 6" strokeOpacity="0.3"/>
     {/* Corner dots */}
     <circle cx="60" cy="36" r="3" fill="#14b8a6" fillOpacity="0.6"/>
-    <circle cx="140" cy="36" r="3" fill="#22c55e" fillOpacity="0.6"/>
+    <circle cx="140" cy="36" r="3" fill="var(--accent)" fillOpacity="0.6"/>
   </svg>
 );
 
@@ -113,7 +113,7 @@ const IllustrationResults = () => (
   <svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg" style={{width:'100%',maxWidth:220,height:'auto'}}>
     <defs>
       <linearGradient id="rsg1" x1="0" y1="1" x2="0" y2="0"><stop offset="0%" stopColor="#14b8a6" stopOpacity="0"/><stop offset="100%" stopColor="#14b8a6" stopOpacity="0.3"/></linearGradient>
-      <linearGradient id="rsg2" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stopColor="#14b8a6"/><stop offset="100%" stopColor="#22c55e"/></linearGradient>
+      <linearGradient id="rsg2" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stopColor="#14b8a6"/><stop offset="100%" stopColor="var(--accent)"/></linearGradient>
     </defs>
     {/* Area fill */}
     <path d="M30 100 L60 85 L90 65 L120 50 L150 32 L170 22 L170 110 L30 110 Z" fill="url(#rsg1)"/>
@@ -122,11 +122,11 @@ const IllustrationResults = () => (
     {/* Dots on line */}
     <circle cx="60" cy="85" r="4" fill="#07100e" stroke="#14b8a6" strokeWidth="2"/>
     <circle cx="90" cy="65" r="4" fill="#07100e" stroke="#14b8a6" strokeWidth="2"/>
-    <circle cx="120" cy="50" r="4" fill="#07100e" stroke="#22c55e" strokeWidth="2"/>
-    <circle cx="150" cy="32" r="5" fill="#22c55e"/>
+    <circle cx="120" cy="50" r="4" fill="#07100e" stroke="var(--accent)" strokeWidth="2"/>
+    <circle cx="150" cy="32" r="5" fill="var(--accent)"/>
     {/* Arrow up at end */}
-    <path d="M162 18 L170 10 L178 18" stroke="#22c55e" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-    <line x1="170" y1="10" x2="170" y2="22" stroke="#22c55e" strokeWidth="2" strokeLinecap="round"/>
+    <path d="M162 18 L170 10 L178 18" stroke="var(--accent)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <line x1="170" y1="10" x2="170" y2="22" stroke="var(--accent)" strokeWidth="2" strokeLinecap="round"/>
     {/* Grid lines */}
     <line x1="30" y1="110" x2="170" y2="110" stroke="rgba(20,184,166,0.2)" strokeWidth="1"/>
     <line x1="30" y1="85" x2="170" y2="85" stroke="rgba(20,184,166,0.1)" strokeWidth="0.8" strokeDasharray="3 5"/>
@@ -173,31 +173,10 @@ const points = [
 
 const pageStyles = `
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-  :root {
-    --bg:#07100e; --bg-2:#0c1a16;
-    --surface:rgba(255,255,255,0.04); --surface-2:rgba(255,255,255,0.07); --surface-3:rgba(255,255,255,0.10);
-    --text:#dff0e8; --muted:#7a9e8e; --muted-2:#4a6a5a;
-    --border:rgba(255,255,255,0.07); --border-2:rgba(255,255,255,0.12);
-    --teal:#14b8a6; --teal-2:#2dd4bf; --teal-d:#0d9488; --teal-glow:rgba(20,184,166,0.20);
-    --accent:#22c55e; --accent-2:#4ade80; --accent-d:#16a34a; --accent-glow:rgba(34,197,94,0.18);
-    --navy:#020c09;
-    --grad-brand:linear-gradient(135deg,var(--teal),var(--accent));
-    --grad-brand-soft:linear-gradient(135deg,rgba(20,184,166,0.15),rgba(34,197,94,0.10));
-    --grad-text:linear-gradient(135deg,var(--teal-2) 0%,var(--accent-2) 100%);
-    --shadow:0 24px 80px rgba(0,0,0,0.55); --shadow-soft:0 8px 32px rgba(0,0,0,0.30);
-    --shadow-brand:0 12px 40px rgba(20,184,166,0.30); --shadow-brand-lg:0 20px 60px rgba(20,184,166,0.40);
-    --radius:20px; --radius-sm:14px; --radius-xs:10px; --radius-pill:999px;
-    --container:min(1400px,100%); --pad:10px;
-    --font-display:'Inter',system-ui,sans-serif; --font-body:'Inter',system-ui,sans-serif;
-    --ease:cubic-bezier(0.22,1,0.36,1); --dur:0.25s; --dur-slow:0.45s;
+  .container{
+    --pad:10px;
+    width:100%; max-width:var(--container); margin:0 auto; padding:0 clamp(12px,4vw,var(--pad))
   }
-
-  *,*::before,*::after{box-sizing:border-box}
-  html{height:100%;scroll-behavior:smooth;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
-  body{margin:0;font-family:var(--font-body);font-size:16px;font-weight:400;line-height:1.6;color:var(--text);background:var(--bg);overflow-x:hidden;min-height:100%}
-  body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 900px 600px at 10% 0%,rgba(20,184,166,0.12),transparent 70%),radial-gradient(ellipse 700px 500px at 90% 10%,rgba(34,197,94,0.09),transparent 70%),radial-gradient(ellipse 600px 400px at 50% 90%,rgba(20,184,166,0.06),transparent 70%);pointer-events:none;z-index:0}
-  body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:0.5}
-  a{color:inherit;text-decoration:none} button{font:inherit;cursor:pointer} img,svg{display:block;max-width:100%}
 
   .app{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column}
   .main{flex:1;padding-top:80px}
@@ -302,7 +281,7 @@ const pageStyles = `
 
   /* ── RESPONSIVE ── */
   @media(max-width:900px){
-    :root{--pad:24px}
+    .container{--pad:24px}
     .grid-2{grid-template-columns:1fr}
     .nav__links{display:none}
     .main{padding-top:72px}
@@ -314,7 +293,7 @@ const pageStyles = `
   }
 
   @media(max-width:600px){
-    :root{--pad:16px}
+    .container{--pad:16px}
     .section{padding:44px 0}
     .principles-bento{gap:12px}
     .principle-cell__icon-wrap{height:130px}

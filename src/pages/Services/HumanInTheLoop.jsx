@@ -153,7 +153,7 @@ export default function HumanInTheLoop() {
             <div className="kicker reveal">Human in the Loop (HITL)</div>
             <h1 className="h1 reveal" style={{ marginTop: 14 }}>
               Where Human Judgment<br />
-              <span style={{ background: "linear-gradient(135deg,#14b8a6,#22c55e)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+              <span style={{ background: "var(--grad-brand)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
                 Meets AI Precision.
               </span>
             </h1>
@@ -173,7 +173,7 @@ export default function HumanInTheLoop() {
               <defs>
                 <linearGradient id="hitl-grad" x1="0" y1="0" x2="1" y2="1">
                   <stop offset="0%" stopColor="#14b8a6"/>
-                  <stop offset="100%" stopColor="#22c55e" stopOpacity=".4"/>
+                  <stop offset="100%" stopColor="var(--accent)" stopOpacity=".4"/>
                 </linearGradient>
               </defs>
               {/* Orbit ring */}
@@ -188,7 +188,7 @@ export default function HumanInTheLoop() {
               {/* AI node */}
               <circle cx={320} cy={190} r={44} fill="rgba(34,197,94,.08)" stroke="rgba(34,197,94,.35)" strokeWidth="2"/>
               <text x={320} y={184} textAnchor="middle" fill="#4ade80" fontSize="13" fontWeight="700">AI</text>
-              <text x={320} y={200} textAnchor="middle" fill="#22c55e" fontSize="10">Model</text>
+              <text x={320} y={200} textAnchor="middle" fill="var(--accent)" fontSize="10">Model</text>
               {/* Top label — moved up so dot doesn't overlap text */}
               <circle cx={200} cy={80} r={5} fill="#14b8a6" opacity=".9"/>
               <rect x={150} y={30} width={100} height={28} rx="6" fill="rgba(20,184,166,.08)" stroke="rgba(20,184,166,.28)" strokeWidth="1"/>

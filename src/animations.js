@@ -96,7 +96,7 @@ export const ANIM_CSS = `
     height: 3px;
     width: 36px;
     border-radius: 99px;
-    background: linear-gradient(90deg, var(--teal), var(--teal-2));
+    background: linear-gradient(90deg, var(--teal), var(--accent));
     margin-bottom: 14px;
     transform-origin: left;
   }
@@ -114,7 +114,7 @@ export const ANIM_CSS = `
   .bar-fill-anim {
     height: 100%;
     border-radius: 99px;
-    background: linear-gradient(90deg, var(--teal), var(--teal-2));
+    background: linear-gradient(90deg, var(--teal), var(--accent));
     transform-origin: left;
     transform: scaleX(0);
     transition: transform 1s cubic-bezier(0.22,1,0.36,1);
@@ -137,7 +137,7 @@ export const ANIM_CSS = `
     justify-content: center;
     width: 36px; height: 36px;
     border-radius: 10px;
-    background: linear-gradient(135deg, var(--teal), var(--teal-2));
+    background: var(--grad-brand);
     color: #fff;
     flex-shrink: 0;
     transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
@@ -161,7 +161,7 @@ export const ANIM_CSS = `
     justify-content: center;
     width: 22px; height: 22px;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--teal), var(--teal-2));
+    background: var(--grad-brand);
     color: #fff;
     font-size: 11px;
     font-weight: 800;
@@ -169,7 +169,7 @@ export const ANIM_CSS = `
   .step-pill__label {
     font-size: 11px;
     font-weight: 700;
-    color: var(--teal);
+    color: var(--accent);
     letter-spacing: 0.04em;
     text-transform: uppercase;
   }
@@ -190,7 +190,7 @@ export const ANIM_CSS = `
 
   /* ── CTA band ───────────────────────────────── */
   .cta-band {
-    background: linear-gradient(130deg, var(--teal) 0%, var(--teal-2) 100%);
+    background: var(--grad-brand);
     border-radius: var(--radius);
     padding: 56px 48px;
     display: flex;

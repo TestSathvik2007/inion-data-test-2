@@ -107,30 +107,6 @@ const whyUs = [
 const pageStyles = `
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
-  :root {
-    --bg: #07100e;
-    --text: #dff0e8;
-    --muted: #7a9e8e;
-    --muted-2: #4a6a5a;
-    --border: rgba(255,255,255,0.07);
-    --border-2: rgba(255,255,255,0.12);
-    --teal: #14b8a6;
-    --teal-2: #2dd4bf;
-    --teal-d: #0d9488;
-    --accent: #22c55e;
-    --accent-2: #4ade80;
-    --navy: #020c09;
-    --grad-brand: linear-gradient(135deg,var(--teal),var(--accent));
-    --grad-text: linear-gradient(135deg,var(--teal-2) 0%,var(--accent-2) 100%);
-    --shadow-soft: 0 8px 32px rgba(0,0,0,0.30);
-    --shadow: 0 24px 80px rgba(0,0,0,0.55);
-    --radius: 16px;
-    --radius-sm: 11px;
-    --radius-pill: 999px;
-    --ease: cubic-bezier(0.22,1,0.36,1);
-    --dur: 0.25s;
-  }
-
   *,*::before,*::after{box-sizing:border-box}
   html{height:100%;scroll-behavior:smooth;-webkit-font-smoothing:antialiased;overflow-x:hidden}
   body{margin:0;font-family:'Inter',system-ui,sans-serif;line-height:1.6;color:var(--text);background:var(--bg);overflow-x:hidden;min-height:100%}
@@ -198,13 +174,13 @@ const pageStyles = `
   /* SERVICE BENTO — 4 cols desktop */
   .ai-svc-bento{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(12px,1.5vw,18px)}
   .ai-svc-cell{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;position:relative;transition:border-color .25s,background .25s}
-  .ai-svc-cell:hover{border-color:rgba(20,184,166,.22);background:rgba(255,255,255,.06)}
-  .ai-svc-cell::before{content:'';position:absolute;inset:0;border-radius:inherit;padding:1px;background:linear-gradient(130deg,transparent 0%,rgba(20,184,166,.22) 50%,transparent 100%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity .45s;pointer-events:none}
+  .ai-svc-cell:hover{border-color:var(--accent);background:rgba(255,255,255,.06)}
+  .ai-svc-cell::before{content:'';position:absolute;inset:0;border-radius:inherit;padding:1px;background:linear-gradient(130deg,transparent 0%,var(--accent) 50%,transparent 100%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity .45s;pointer-events:none}
   .ai-svc-cell:hover::before{opacity:1}
   .ai-svc-cell__body{padding:clamp(10px,2.5vw,18px);display:flex;flex-direction:column;flex:1}
   .ai-svc-cell__head{display:flex;align-items:flex-start;gap:8px;margin-bottom:8px}
   .ai-svc-cell__footer{display:flex;gap:6px;margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.07);flex-wrap:wrap}
-  .svc-tag{font-size:8px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-2);background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.25);border-radius:4px;padding:2px 6px;white-space:nowrap}
+  .svc-tag{font-size:8px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-2);background:var(--accent-glow);border:1px solid var(--accent);border-radius:4px;padding:2px 6px;white-space:nowrap}
   .svc-num{font-size:9px;font-weight:700;color:var(--teal);letter-spacing:.06em;text-transform:uppercase;line-height:1;margin-bottom:2px}
   .svc-title{font-weight:700;font-size:clamp(11px,1.6vw,14px);line-height:1.2;color:var(--text)}
   .svc-desc{font-size:clamp(10px,1.3vw,12px);color:var(--muted);line-height:1.5;margin:0 0 8px}

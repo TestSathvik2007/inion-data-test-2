@@ -116,7 +116,7 @@ const styles = `
   font-size:clamp(80px,14vw,160px);
   font-weight:800;
   line-height:1;
-  background:linear-gradient(135deg,#14b8a6 0%,#22c55e 50%,#2dd4bf 100%);
+  background:var(--grad-brand);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
   letter-spacing:-0.06em;
@@ -162,7 +162,7 @@ const styles = `
 .fg-driver-stat { text-align:right }
 .fg-driver-stat-val {
   font-size:34px; font-weight:800;
-  background:linear-gradient(135deg,#14b8a6,#22c55e);
+  background:var(--grad-brand);
   -webkit-background-clip:text; -webkit-text-fill-color:transparent;
   line-height:1;
 }

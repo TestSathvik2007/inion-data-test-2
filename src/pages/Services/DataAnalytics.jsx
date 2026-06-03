@@ -155,7 +155,7 @@ export default function DataAnalytics() {
             <div className="kicker reveal">Data & Analytics</div>
             <h1 className="h1 reveal" style={{ marginTop: 14 }}>
               Turn your data into<br />
-              <span style={{ background: "linear-gradient(135deg,#14b8a6,#22c55e)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+              <span style={{ background: "var(--grad-brand)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
                 strategic insight.
               </span>
             </h1>

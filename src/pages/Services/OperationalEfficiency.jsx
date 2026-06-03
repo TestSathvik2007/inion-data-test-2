@@ -121,7 +121,7 @@ const styles = `
   position:absolute;
   left:0; top:0; bottom:0;
   width:3px;
-  background:linear-gradient(180deg,#14b8a6,#22c55e);
+  background:linear-gradient(180deg, var(--teal), var(--accent));
   transform:scaleY(0);
   transform-origin:bottom;
   transition:transform .3s ease;
@@ -162,7 +162,7 @@ export default function OperationalEfficiency() {
           <div>
             <div className="kicker reveal">Service</div>
             <h1 className="h1 reveal" style={{ marginTop: 14 }}>
-              <span style={{ background: "linear-gradient(135deg,#14b8a6,#22c55e)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+              <span style={{ background: "var(--grad-brand)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
                 Operational Efficiency
               </span>
             </h1>
@@ -250,7 +250,7 @@ export default function OperationalEfficiency() {
               <defs>
                 <linearGradient id="oeGrad" x1="40" y1="260" x2="380" y2="40" gradientUnits="userSpaceOnUse">
                   <stop offset="0%" stopColor="#14b8a6" />
-                  <stop offset="100%" stopColor="#22c55e" />
+                  <stop offset="100%" stopColor="var(--accent)" />
                 </linearGradient>
               </defs>
             </svg>

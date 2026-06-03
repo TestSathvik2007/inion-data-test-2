@@ -160,9 +160,9 @@ const lifecycle = [
 
 const techStack = [
   { name: "React / Next.js", tag: "Frontend", color: "rgba(20,184,166,.14)" },
-  { name: "Node.js / Python", tag: "Backend", color: "rgba(34,197,94,.11)" },
+  { name: "Node.js / Python", tag: "Backend", color: "var(--accent-glow)" },
   { name: "Docker + K8s", tag: "Infra", color: "rgba(20,184,166,.10)" },
-  { name: "AWS / Azure / GCP", tag: "Cloud", color: "rgba(34,197,94,.09)" },
+  { name: "AWS / Azure / GCP", tag: "Cloud", color: "var(--accent-glow)" },
 ];
 
 const pills = ["TypeScript", "GraphQL", "PostgreSQL", "Redis", "Kafka", "Terraform", "GitHub Actions", "Jest / Cypress", "Bot Framework", "Teams JS SDK", "Azure AD", "Power Automate"];
@@ -172,50 +172,7 @@ const pills = ["TypeScript", "GraphQL", "PostgreSQL", "Redis", "Kafka", "Terrafo
 const styles = `
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap');
 
-:root {
-  --bg: #07100e;
-  --bg-2: #0c1a16;
-  --surface: rgba(255,255,255,0.04);
-  --surface-2: rgba(255,255,255,0.07);
-  --text: #dff0e8;
-  --muted: #7a9e8e;
-  --border: rgba(255,255,255,0.07);
-  --border-2: rgba(255,255,255,0.13);
-  --teal: #14b8a6;
-  --teal-2: #2dd4bf;
-  --teal-d: #0d9488;
-  --teal-glow: rgba(20,184,166,0.18);
-  --accent: #22c55e;
-  --accent-2: #4ade80;
-  --grad: linear-gradient(135deg, #14b8a6, #22c55e);
-  --grad-text: linear-gradient(135deg, #2dd4bf 0%, #4ade80 100%);
-  --shadow: 0 24px 80px rgba(0,0,0,0.5);
-  --shadow-brand: 0 12px 40px rgba(20,184,166,0.25);
-  --radius: 20px;
-  --radius-sm: 14px;
-  --ease: cubic-bezier(0.22,1,0.36,1);
-}
 
-*, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
-body {
-  margin: 0;
-  font-family: 'DM Sans', system-ui, sans-serif;
-  color: var(--text);
-  background: var(--bg);
-  overflow-x: hidden;
-}
-body::before {
-  content: '';
-  position: fixed; inset: 0;
-  background:
-    radial-gradient(ellipse 900px 600px at 10% 0%, rgba(20,184,166,0.11), transparent 70%),
-    radial-gradient(ellipse 700px 500px at 90% 10%, rgba(34,197,94,0.08), transparent 70%),
-    radial-gradient(ellipse 600px 400px at 50% 90%, rgba(20,184,166,0.06), transparent 70%);
-  pointer-events: none; z-index: 0;
-}
-a { color: inherit; text-decoration: none; }
-img { display: block; max-width: 100%; }
 
 .container { width: 100%; max-width: 1400px; margin: 0 auto; padding: 0 clamp(16px, 5vw, 60px); }
 .section { padding: clamp(48px, 8vw, 100px) 0; position: relative; z-index: 1; }
@@ -295,7 +252,7 @@ img { display: block; max-width: 100%; }
 .sprint-bar-fill { height: 100%; border-radius: 999px; background: var(--grad); width: 0%; transition: width 1.2s cubic-bezier(0.22,0.68,0,1) 1.1s; }
 .sprint-bar-fill.animate { width: var(--w); }
 .sprint-status { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--muted); }
-.sprint-dot { width: 7px; height: 7px; border-radius: 50%; background: #22c55e; animation: blink 2s ease-in-out infinite; }
+.sprint-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); animation: blink 2s ease-in-out infinite; }
 @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.35} }
 
 /* ─── SERVICE PILLARS TABS ─── */

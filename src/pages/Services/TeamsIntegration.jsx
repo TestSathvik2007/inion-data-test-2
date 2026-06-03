@@ -116,7 +116,7 @@ const styles = `
 .ti-stat-cell:hover { background:rgba(20,184,166,.07) }
 .ti-stat-val {
   font-size:38px; font-weight:800;
-  background:linear-gradient(135deg,#14b8a6,#22c55e);
+  background:var(--grad-brand);
   -webkit-background-clip:text; -webkit-text-fill-color:transparent;
 }
 .ti-stat-lbl { font-size:12px; color:var(--muted); margin-top:4px }
@@ -235,7 +235,7 @@ const styles = `
 .ti-benefit:hover { border-color:rgba(20,184,166,.3); transform:translateY(-4px) }
 .ti-benefit-stat {
   font-size:42px; font-weight:800;
-  background:linear-gradient(135deg,#14b8a6,#22c55e);
+  background:var(--grad-brand);
   -webkit-background-clip:text; -webkit-text-fill-color:transparent;
   line-height:1; margin-bottom:4px;
 }
@@ -284,7 +284,7 @@ const styles = `
   position:absolute;
   left:0; top:0; bottom:0;
   width:3px;
-  background:linear-gradient(180deg,#14b8a6,#22c55e);
+  background:linear-gradient(180deg, var(--teal), var(--accent));
   transform:scaleY(0);
   transform-origin:bottom;
   transition:transform .3s ease;
@@ -324,7 +324,7 @@ export default function TeamsIntegration() {
           <div>
             <div className="kicker reveal">Service</div>
             <h1 className="h1 reveal" style={{ marginTop: 14 }}>
-              <span style={{ background: "linear-gradient(135deg,#14b8a6,#22c55e)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+              <span style={{ background: "var(--grad-brand)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
                 Teams Application Development and Integration
               </span>
             </h1>

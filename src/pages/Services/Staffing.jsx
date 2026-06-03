@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 // ── DATA ──────────────────────────────────────────────────────────────────────
 
@@ -17,7 +17,7 @@ const hiringModels = [
     title: "Contract-to-Hire",
     desc: "Evaluate talent on the job before committing. Reduce hiring risk while securing the right long-term fit for your team.",
     tags: ["Trial period", "Risk-free", "Culture fit assured"],
-    accent: "#22c55e",
+    accent: "var(--accent)",
     icon: "⚖",
   },
   {
@@ -78,39 +78,6 @@ const whyUs = [
 const css = `
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
-  :root {
-    --bg: #07100e;
-    --bg-2: #0c1a16;
-    --surface: rgba(255,255,255,0.04);
-    --surface-2: rgba(255,255,255,0.07);
-    --text: #dff0e8;
-    --muted: #7a9e8e;
-    --border: rgba(255,255,255,0.07);
-    --border-2: rgba(255,255,255,0.12);
-    --teal: #14b8a6;
-    --teal-2: #2dd4bf;
-    --teal-d: #0d9488;
-    --accent: #22c55e;
-    --shadow: 0 24px 80px rgba(0,0,0,0.55);
-    --shadow-soft: 0 8px 32px rgba(0,0,0,0.30);
-    --radius: 20px;
-    --radius-sm: 14px;
-    --radius-pill: 999px;
-    --container: min(1320px,100%);
-    --pad: 40px;
-    --font: 'Inter', system-ui, sans-serif;
-    --ease: cubic-bezier(0.22,1,0.36,1);
-    --dur: 0.25s;
-  }
-
-  *, *::before, *::after { box-sizing: border-box; }
-  html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
-  body { margin: 0; font-family: var(--font); line-height: 1.6; color: var(--text); background: var(--bg); overflow-x: hidden; }
-  body::before { content:''; position:fixed; inset:0; background:radial-gradient(ellipse 900px 600px at 10% 0%,rgba(20,184,166,0.12),transparent 70%),radial-gradient(ellipse 700px 500px at 90% 10%,rgba(34,197,94,0.09),transparent 70%),radial-gradient(ellipse 600px 400px at 50% 90%,rgba(20,184,166,0.06),transparent 70%); pointer-events:none; z-index:0; }
-  a { color:inherit; text-decoration:none; }
-  button { font:inherit; cursor:pointer; }
-  img { display:block; max-width:100%; }
-
   .sf-wrap { position:relative; z-index:1; }
   .sf-container { width:100%; max-width:var(--container); margin:0 auto; padding:0 clamp(16px,4vw,var(--pad)); }
   .sf-section { padding:clamp(56px,9vw,110px) 0; position:relative; z-index:1; }
@@ -154,21 +121,68 @@ const css = `
 
   /* ── MODELS ── */
   .sf-models-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:40px; }
-  .sf-model-card { background:rgba(255,255,255,0.035); border:1px solid rgba(255,255,255,0.07); border-radius:20px; padding:clamp(20px,3vw,32px); position:relative; overflow:hidden; transition:border-color .3s ease,transform .3s var(--ease),box-shadow .3s ease; }
-  .sf-model-card::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,transparent,var(--card-accent,#14b8a6),transparent); opacity:0; transition:opacity .3s ease; }
-  .sf-model-card:hover { border-color:rgba(20,184,166,0.30); transform:translateY(-5px); box-shadow:0 24px 60px rgba(0,0,0,0.4); }
-  .sf-model-card:hover::before { opacity:1; }
+  .sf-model-card {
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 20px;
+    padding: clamp(20px, 3vw, 32px);
+    position: relative;
+    overflow: hidden;
+    transition: border-color .3s ease, transform .35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow .35s ease, background-color .3s ease;
+  }
+  .sf-model-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--card-accent, #14b8a6), transparent);
+    opacity: 0;
+    transition: opacity .3s ease;
+  }
+  .sf-model-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top right, rgba(20, 184, 166, 0.08) 0%, transparent 65%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+  }
+  .sf-model-card:hover {
+    border-color: rgba(20, 184, 166, 0.35);
+    transform: translateY(-8px) scale(1.015);
+    background-color: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(20, 184, 166, 0.06);
+  }
+  .sf-model-card:hover::before,
+  .sf-model-card:hover::after {
+    opacity: 1;
+  }
   .sf-model-num { font-size:10px; font-weight:800; letter-spacing:0.16em; color:var(--teal-2); margin-bottom:14px; }
   .sf-model-title { font-size:clamp(16px,1.8vw,20px); font-weight:700; color:var(--text); margin:0 0 10px; letter-spacing:-0.02em; }
   .sf-model-desc { font-size:clamp(12px,1.3vw,13px); color:var(--muted); line-height:1.75; margin:0 0 18px; }
   .sf-model-tags { display:flex; flex-wrap:wrap; gap:6px; }
-  .sf-model-tag { font-size:10px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:3px 10px; border-radius:99px; background:rgba(20,184,166,0.10); border:1px solid rgba(20,184,166,0.20); color:var(--teal-2); }
+  .sf-model-tag { font-size:10px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:3px 10px; border-radius:99px; background:rgba(20, 184, 166, 0.10); border:1px solid rgba(20, 184, 166, 0.20); color:var(--teal-2); }
   .sf-model-icon { position:absolute; top:20px; right:20px; width:36px; height:36px; border-radius:10px; background:rgba(20,184,166,0.08); border:1px solid rgba(20,184,166,0.15); display:flex; align-items:center; justify-content:center; font-size:16px; }
 
   /* ── WHY US ── */
   .sf-why-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:20px; margin-top:40px; }
-  .sf-why-card { background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07); border-radius:16px; padding:clamp(20px,3vw,28px); display:grid; grid-template-columns:46px 1fr; gap:16px; align-items:flex-start; transition:border-color .25s ease,background .25s ease; }
-  .sf-why-card:hover { border-color:rgba(20,184,166,0.28); background:rgba(20,184,166,0.04); }
+  .sf-why-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 16px;
+    padding: clamp(20px, 3vw, 28px);
+    display: grid;
+    grid-template-columns: 46px 1fr;
+    gap: 16px;
+    align-items: flex-start;
+    transition: border-color .3s ease, background-color .3s ease, transform .3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow .3s ease;
+  }
+  .sf-why-card:hover {
+    border-color: rgba(20, 184, 166, 0.35);
+    background-color: rgba(20, 184, 166, 0.04);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+  }
   .sf-why-icon { width:40px; height:40px; border-radius:10px; background:rgba(20,184,166,0.10); border:1px solid rgba(20,184,166,0.20); display:flex; align-items:center; justify-content:center; font-size:16px; color:var(--teal-2); flex-shrink:0; }
   .sf-why-title { font-size:clamp(13px,1.5vw,15px); font-weight:700; color:var(--text); margin:0 0 6px; letter-spacing:-0.01em; }
   .sf-why-desc { font-size:clamp(11px,1.2vw,13px); color:var(--muted); line-height:1.75; margin:0; }
@@ -227,13 +241,194 @@ const css = `
     .sf-hero-btns { flex-direction:column; align-items:flex-start; }
     .sf-hero-btns .btn,
     .sf-hero-btns a { width:100%; justify-content:center; }
-    .sf-models-grid { grid-template-columns:1fr; }
-    .sf-why-grid { grid-template-columns:1fr; }
-    .sf-process-grid { grid-template-columns:1fr; }
+    .sf-models-grid { grid-template-columns: 1fr; }
+    .sf-why-grid { grid-template-columns: 1fr; }
+    .sf-process-grid { grid-template-columns: 1fr; }
     .sf-hero-img-wrap { aspect-ratio:4/3; border-radius:14px; }
     .sf-cta-btns { flex-direction:column; align-items:center; }
     .sf-cta-btns .btn,
     .sf-cta-btns a { width:100%; max-width:320px; justify-content:center; }
+  }
+
+  /* ── ESTIMATOR WIDGET ── */
+  .sf-calc-section {
+    background: rgba(255, 255, 255, 0.005);
+  }
+  .sf-calc-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 24px;
+    padding: clamp(24px, 4vw, 44px);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    margin-top: 36px;
+    box-shadow: var(--shadow-soft);
+  }
+  .sf-calc-grid {
+    display: grid;
+    grid-template-columns: 1.25fr 0.75fr;
+    gap: 40px;
+  }
+  .sf-calc-group {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .sf-calc-label {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--teal-2);
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .sf-calc-label span.value {
+    color: var(--text);
+    font-size: 15px;
+    font-weight: 800;
+  }
+  .sf-calc-options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  .sf-calc-opt {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    padding: 12px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--muted);
+    transition: all 0.22s var(--ease);
+  }
+  .sf-calc-opt:hover {
+    border-color: rgba(20, 184, 166, 0.35);
+    color: var(--text);
+  }
+  .sf-calc-opt.active {
+    background: rgba(20, 184, 166, 0.12);
+    border-color: var(--teal);
+    color: var(--teal-2);
+    box-shadow: 0 0 16px rgba(20, 184, 166, 0.08);
+  }
+  .sf-calc-slider-wrap {
+    position: relative;
+    padding-top: 4px;
+  }
+  .sf-calc-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 5px;
+    border-radius: 99px;
+    background: rgba(20, 184, 166, 0.15);
+    outline: none;
+    cursor: pointer;
+  }
+  .sf-calc-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--teal-2);
+    border: 3px solid var(--bg);
+    box-shadow: 0 0 8px rgba(20, 184, 166, 0.5);
+    transition: transform 0.15s ease;
+  }
+  .sf-calc-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+  }
+  .sf-calc-results {
+    background: rgba(12, 26, 22, 0.72);
+    border: 1px solid rgba(20, 184, 166, 0.15);
+    border-radius: 18px;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .sf-calc-results::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, var(--teal), var(--teal-2));
+  }
+  .sf-result-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .sf-result-label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--muted);
+  }
+  .sf-result-value {
+    font-size: clamp(18px, 2.2vw, 24px);
+    font-weight: 800;
+    color: var(--text);
+    text-align: right;
+  }
+  .sf-result-value.highlight {
+    background: var(--grad-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: var(--teal-2);
+  }
+  .sf-gauge-wrap {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .sf-gauge-text {
+    display: flex;
+    flex-direction: column;
+  }
+  .sf-gauge-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--muted);
+  }
+  .sf-gauge-num {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--teal-2);
+  }
+
+  /* SVG Circle styles */
+  .sf-circle-bg {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.05);
+    stroke-width: 3.5;
+  }
+  .sf-circle-fill {
+    fill: none;
+    stroke: var(--teal-2);
+    stroke-width: 3.5;
+    stroke-linecap: round;
+    transition: stroke-dasharray 0.4s ease;
+  }
+
+  @media(max-width:960px) {
+    .sf-calc-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+  }
+  @media(max-width:560px) {
+    .sf-calc-options {
+      grid-template-columns: 1fr;
+    }
   }
 `;
 
@@ -257,6 +452,49 @@ function useReveal() {
 
 export default function StaffingSolutions() {
   useReveal();
+
+  const [selectedDomain, setSelectedDomain] = useState("SAP & ERP");
+  const [selectedModel, setSelectedModel] = useState("Contract Staffing");
+  const [specialistsCount, setSpecialistsCount] = useState(3);
+  const [durationMonths, setDurationMonths] = useState(6);
+
+  // Dynamic calculations
+  const estSourcingDays = 
+    selectedModel === "Contract Staffing" 
+      ? Math.max(4, 3 + Math.floor(specialistsCount * 0.4) + (selectedDomain === "Data & AI" ? 2 : 0))
+      : selectedModel === "Contract-to-Hire"
+        ? Math.max(7, 7 + Math.floor(specialistsCount * 0.5))
+        : Math.max(14, 12 + Math.floor(specialistsCount * 0.7));
+
+  const riskMitigation = 
+    selectedModel === "Contract-to-Hire" ? 98 : selectedModel === "Direct Hire" ? 95 : 90;
+
+  // Circular gauge offset: circumference is 113. 
+  const strokeDashoffset = 113 - (riskMitigation / 100) * 113;
+
+  const targetSavings = specialistsCount * durationMonths * 3200;
+  const [animatedSavings, setAnimatedSavings] = useState(0);
+
+  useEffect(() => {
+    let start = animatedSavings;
+    const end = targetSavings;
+    if (start === end) return;
+    
+    const range = end - start;
+    const duration = 300; // ms
+    let startTime = null;
+
+    const step = (timestamp) => {
+      if (!startTime) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime) / duration, 1);
+      setAnimatedSavings(Math.floor(start + range * progress));
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      }
+    };
+    
+    requestAnimationFrame(step);
+  }, [targetSavings]);
 
   return (
     <div className="sf-wrap">
@@ -408,6 +646,165 @@ export default function StaffingSolutions() {
                 <p className="sf-process-desc">{p.desc}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ══ TEAM SOURCING & ROI ESTIMATOR ══ */}
+      <section className="sf-section sf-calc-section">
+        <div className="sf-container">
+          <div className="reveal">
+            <div className="kicker">Interactive Planner</div>
+            <h2 className="h2" style={{ marginTop: 10 }}>Configure your ideal team & calculate ROI</h2>
+            <div className="section-divider" />
+            <p className="lead" style={{ maxWidth: "60ch" }}>
+              Select your domain, scale, and timeline. Get an instant estimate of delivery speed, risk score, and budget optimization compared to standard staffing methods.
+            </p>
+          </div>
+
+          <div className="sf-calc-card reveal">
+            <div className="sf-calc-grid">
+              
+              {/* Inputs Column */}
+              <div className="sf-calc-group">
+                
+                {/* 1. SELECT DOMAIN */}
+                <div>
+                  <div className="sf-calc-label">
+                    <span>1. Domain Specialisation</span>
+                    <span className="value">{selectedDomain}</span>
+                  </div>
+                  <div className="sf-calc-options">
+                    {["SAP & ERP", "Data & AI", "Cloud & DevOps"].map((dom) => (
+                      <div 
+                        key={dom} 
+                        className={`sf-calc-opt${selectedDomain === dom ? " active" : ""}`}
+                        onClick={() => setSelectedDomain(dom)}
+                      >
+                        {dom}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* 2. HIRING MODEL */}
+                <div>
+                  <div className="sf-calc-label">
+                    <span>2. Hiring Model</span>
+                    <span className="value">{selectedModel}</span>
+                  </div>
+                  <div className="sf-calc-options">
+                    {["Contract Staffing", "Contract-to-Hire", "Direct Hire"].map((mod) => (
+                      <div 
+                        key={mod} 
+                        className={`sf-calc-opt${selectedModel === mod ? " active" : ""}`}
+                        onClick={() => setSelectedModel(mod)}
+                      >
+                        {mod}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* 3. NUMBER OF SPECIALISTS */}
+                <div>
+                  <div className="sf-calc-label">
+                    <span>3. Specialists Needed</span>
+                    <span className="value">{specialistsCount} {specialistsCount === 1 ? "expert" : "experts"}</span>
+                  </div>
+                  <div className="sf-calc-slider-wrap">
+                    <input 
+                      type="range" 
+                      min="1" 
+                      max="20" 
+                      value={specialistsCount}
+                      onChange={(e) => setSpecialistsCount(parseInt(e.target.value))}
+                      className="sf-calc-slider"
+                    />
+                  </div>
+                </div>
+
+                {/* 4. DURATION */}
+                <div>
+                  <div className="sf-calc-label">
+                    <span>4. Engagement Duration</span>
+                    <span className="value">{durationMonths} {durationMonths === 1 ? "month" : "months"}</span>
+                  </div>
+                  <div className="sf-calc-slider-wrap">
+                    <input 
+                      type="range" 
+                      min="1" 
+                      max="12" 
+                      value={durationMonths}
+                      onChange={(e) => setDurationMonths(parseInt(e.target.value))}
+                      className="sf-calc-slider"
+                    />
+                  </div>
+                </div>
+
+              </div>
+
+              {/* Outputs Column */}
+              <div className="sf-calc-results">
+                
+                {/* Result 1: Sourcing Speed */}
+                <div className="sf-result-item">
+                  <div className="sf-result-label">Est. Sourcing Time</div>
+                  <div className="sf-result-value highlight">
+                    {estSourcingDays} {estSourcingDays === 1 ? "day" : "days"}
+                  </div>
+                </div>
+
+                {/* Result 2: Savings */}
+                <div className="sf-result-item">
+                  <div className="sf-result-label">Cost Optimization</div>
+                  <div className="sf-result-value highlight">
+                    ${animatedSavings.toLocaleString()} Saved
+                  </div>
+                </div>
+
+                {/* Result 3: Circular Risk Mitigation Gauge */}
+                <div className="sf-result-item" style={{ borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: "20px" }}>
+                  <div className="sf-gauge-wrap">
+                    <svg width="44" height="44" viewBox="0 0 44 44">
+                      <circle cx="22" cy="22" r="18" className="sf-circle-bg" />
+                      <circle 
+                        cx="22" 
+                        cy="22" 
+                        r="18" 
+                        className="sf-circle-fill" 
+                        strokeDasharray="113"
+                        strokeDashoffset={strokeDashoffset}
+                        transform="rotate(-90 22 22)"
+                      />
+                    </svg>
+                    <div className="sf-gauge-text">
+                      <span className="sf-gauge-title">Risk Mitigation</span>
+                      <span className="sf-gauge-num">{riskMitigation}%</span>
+                    </div>
+                  </div>
+                  <div style={{ fontSize: "11px", color: "var(--muted)", maxWidth: "120px", textAlign: "right" }}>
+                    {selectedModel === "Contract-to-Hire" 
+                      ? "Trial period guarantees candidate performance."
+                      : selectedModel === "Direct Hire"
+                        ? "Vetted permanent placement guarantee."
+                        : "Fully managed on-demand contract team."}
+                  </div>
+                </div>
+
+                {/* Direct CTA */}
+                <div style={{ marginTop: "12px" }}>
+                  <Link 
+                    className="btn btn--primary btn--full" 
+                    to={`/contact?domain=${encodeURIComponent(selectedDomain)}&model=${encodeURIComponent(selectedModel)}&count=${specialistsCount}&duration=${durationMonths}`}
+                  >
+                    Request this Configuration →
+                  </Link>
+                </div>
+
+              </div>
+
+            </div>
           </div>
         </div>
       </section>

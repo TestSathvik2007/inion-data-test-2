@@ -106,7 +106,7 @@ const styles = `
 
 .de-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:40px; }
 .de-card { padding:28px 26px; border-radius:20px; background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.07); transition:.3s var(--ease); position:relative; overflow:hidden; }
-.de-card::after { content:''; position:absolute; bottom:0; left:0; right:0; height:2px; background:linear-gradient(90deg,#14b8a6,#22c55e); transform:scaleX(0); transform-origin:left; transition:.3s; }
+.de-card::after { content:''; position:absolute; bottom:0; left:0; right:0; height:2px; background:linear-gradient(90deg, var(--teal), var(--accent)); transform:scaleX(0); transform-origin:left; transition:.3s; }
 .de-card:hover { transform:translateY(-6px); border-color:rgba(20,184,166,.3); box-shadow:0 20px 60px rgba(20,184,166,.12) }
 .de-card:hover::after { transform:scaleX(1) }
 .de-card-icon { width:40px; height:40px; border-radius:10px; background:rgba(20,184,166,.1); border:1px solid rgba(20,184,166,.25); display:flex; align-items:center; justify-content:center; margin-bottom:14px; color:#2dd4bf; }
@@ -157,7 +157,7 @@ export default function DataEngineering() {
             <div className="kicker reveal">Data Engineering</div>
             <h1 className="h1 reveal" style={{ marginTop: 14 }}>
               Transform Your Data into a<br />
-              <span style={{ background: "linear-gradient(135deg,#14b8a6,#22c55e)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+              <span style={{ background: "var(--grad-brand)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
                 Strategic Advantage.
               </span>
             </h1>
@@ -180,7 +180,7 @@ export default function DataEngineering() {
               <defs>
                 <linearGradient id="de-grad" x1="0" y1="0" x2="1" y2="0">
                   <stop offset="0%" stopColor="#14b8a6" stopOpacity=".9"/>
-                  <stop offset="100%" stopColor="#22c55e" stopOpacity=".3"/>
+                  <stop offset="100%" stopColor="var(--accent)" stopOpacity=".3"/>
                 </linearGradient>
               </defs>
               {/* Source nodes */}

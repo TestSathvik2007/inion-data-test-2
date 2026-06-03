@@ -112,7 +112,7 @@ const styles = `
 
 .ce-providers { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:32px; }
 .ce-provider { padding:24px; border-radius:16px; border:1px solid rgba(255,255,255,.08); text-align:center; transition:.25s; position:relative; overflow:hidden; }
-.ce-provider::after { content:''; position:absolute; bottom:0; left:0; right:0; height:2px; background:linear-gradient(90deg,#14b8a6,#22c55e); transform:scaleX(0); transform-origin:left; transition:.3s; }
+.ce-provider::after { content:''; position:absolute; bottom:0; left:0; right:0; height:2px; background:linear-gradient(90deg, var(--teal), var(--accent)); transform:scaleX(0); transform-origin:left; transition:.3s; }
 .ce-provider:hover { border-color:rgba(20,184,166,.3); background:rgba(20,184,166,.05) }
 .ce-provider:hover::after { transform:scaleX(1) }
 .ce-provider-name { font-weight:700; font-size:15px; margin-bottom:6px; color:var(--text) }
@@ -157,7 +157,7 @@ export default function CloudEngineering() {
             <div className="kicker reveal">Cloud Engineering</div>
             <h1 className="h1 reveal" style={{ marginTop: 14 }}>
               Scale, Secure, and<br />
-              <span style={{ background: "linear-gradient(135deg,#14b8a6,#22c55e)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+              <span style={{ background: "var(--grad-brand)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
                 Innovate in the Cloud.
               </span>
             </h1>
