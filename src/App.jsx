@@ -2,13 +2,14 @@ import { BrowserRouter, Navigate, Route, Routes, useLocation } from "react-route
 import { useEffect, lazy, Suspense } from "react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import ParticleBackground from "./components/ParticleBackground";
 
-const Home                   = lazy(() => import("./pages/Home"));
-const About                  = lazy(() => import("./pages/About"));
-const Services               = lazy(() => import("./pages/Services"));
-const Contact                = lazy(() => import("./pages/Contact"));
-const AIEnablement           = lazy(() => import("./pages/AIEnablement"));
-const AppDevelopment         = lazy(() => import("./pages/Services/ApplicationDevelopment"));
+const Home = lazy(() => import("./pages/Home"));
+const About = lazy(() => import("./pages/About"));
+const Services = lazy(() => import("./pages/Services"));
+const Contact = lazy(() => import("./pages/Contact"));
+const AIEnablement = lazy(() => import("./pages/AIEnablement"));
+const AppDevelopment = lazy(() => import("./pages/Services/ApplicationDevelopment"));
 const ApplicationIntegration = lazy(() => import("./pages/Services/ApplicationIntegration"));
 const ApplicationManagement = lazy(() => import("./pages/Services/ApplicationManagement"));
 const ApplicationMaintenance = lazy(() => import("./pages/Services/ApplicationMaintenance"));
@@ -24,7 +25,7 @@ const DataScience = lazy(() => import("./pages/Services/DataScience"));
 const Staffing = lazy(() => import("./pages/Services/Staffing"));
 const HumanInTheLoop = lazy(() => import("./pages/Services/HumanInTheLoop"));
 const Careers = lazy(() => import("./pages/Careers"));
-const JobApplication = lazy(() => import("./pages/JobApplication")); // ✅ new
+const JobApplication = lazy(() => import("./pages/JobApplication"));
 const AdminLogin = lazy(() => import("./pages/AdminLogin"));
 const AdminDashboard = lazy(() => import("./pages/AdminDashboard"));
 
@@ -74,7 +75,7 @@ function AnimatedRoutes() {
           <Route path="/services/data-science" element={<DataScience />} />
           <Route path="/services/human-in-the-loop" element={<HumanInTheLoop />} />
           <Route path="/careers" element={<Careers />} />
-          <Route path="/apply/:jobId" element={<JobApplication />} /> {/* ✅ new */}
+          <Route path="/apply/:jobId" element={<JobApplication />} />
           <Route path="/admin" element={<AdminLogin />} />
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
           <Route path="*" element={<Navigate to="/" replace />} />
@@ -89,6 +90,7 @@ export default function App() {
     <BrowserRouter>
       <style>{pageTransitionStyles}</style>
       <ScrollToTop />
+      <ParticleBackground />
       <div className="app">
         <Navbar />
         <main className="main">

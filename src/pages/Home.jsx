@@ -57,7 +57,7 @@ const trust = [
   { title: "AI-driven innovation", desc: "Vision AI, test automation, risk-based testing, self-healing tests, and performance optimisation baked into every engagement.", lottie: "https://assets1.lottiefiles.com/packages/lf20_kkflmtur.json" },
 ];
 
-const TW_WORDS = ["enterprise applications.", "data & AI solutions.", "digital transformation."];
+const TW_WORDS = ["ENTERPRISE APPLICATIONS.", "DATA & AI SOLUTIONS.", "DIGITAL TRANSFORMATION."];
 
 // ── CAROUSEL CONSTANTS ────────────────────────────────────────────────────────
 const CARD_W = 300;
@@ -248,25 +248,6 @@ const pageStyles = `
     .svc-card { width: calc(100vw - 64px); }
     .tw-word-block { min-height: calc(1.04em * 3); }
     .kicker { clip-path: none; border-radius: 6px; }
-  }
-
-  /* HERO CANVAS BACKGROUND & MARQUEE */
-  .hero-section-wrap {
-    position: relative;
-    overflow: hidden;
-  }
-  .hero-canvas {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    pointer-events: none;
-    opacity: 0.65;
-  }
-  .hero-grid {
-    position: relative;
-    z-index: 1;
   }
 `;
 
@@ -500,134 +481,19 @@ function ServicesCarousel() {
 
 // ── HOME PAGE ─────────────────────────────────────────────────────────────────
 
-
 export default function Home() {
   useReveal();
   useLottieScript();
   const twWord = useTypewriter();
   const ctaRef = useRef(null);
   useBarFillOnScroll(ctaRef);
-  const canvasRef = useRef(null);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    let animationFrameId;
-    let width = (canvas.width = canvas.offsetWidth);
-    let height = (canvas.height = canvas.offsetHeight);
-
-    const particles = [];
-    const particleCount = Math.min(50, Math.floor((width * height) / 18000));
-    let mouse = { x: null, y: null, radius: 140 };
-
-    const handleMouseMove = (e) => {
-      const rect = canvas.getBoundingClientRect();
-      mouse.x = e.clientX - rect.left;
-      mouse.y = e.clientY - rect.top;
-    };
-
-    const handleMouseLeave = () => {
-      mouse.x = null;
-      mouse.y = null;
-    };
-
-    const handleResize = () => {
-      if (!canvas) return;
-      width = canvas.width = canvas.offsetWidth;
-      height = canvas.height = canvas.offsetHeight;
-    };
-
-    const parentSection = canvas.parentElement;
-    if (parentSection) {
-      parentSection.addEventListener("mousemove", handleMouseMove);
-      parentSection.addEventListener("mouseleave", handleMouseLeave);
-    }
-    window.addEventListener("resize", handleResize);
-
-    class Particle {
-      constructor() {
-        this.x = Math.random() * width;
-        this.y = Math.random() * height;
-        this.vx = (Math.random() - 0.5) * 0.4;
-        this.vy = (Math.random() - 0.5) * 0.4;
-        this.radius = Math.random() * 2 + 1;
-      }
-      update() {
-        this.x += this.vx;
-        this.y += this.vy;
-
-        if (this.x < 0 || this.x > width) this.vx *= -1;
-        if (this.y < 0 || this.y > height) this.vy *= -1;
-
-        if (mouse.x !== null && mouse.y !== null) {
-          const dx = this.x - mouse.x;
-          const dy = this.y - mouse.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < mouse.radius) {
-            const force = (mouse.radius - dist) / mouse.radius;
-            this.x -= (dx / dist) * force * 1.5;
-            this.y -= (dy / dist) * force * 1.5;
-          }
-        }
-      }
-      draw() {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(45, 212, 191, 0.4)";
-        ctx.fill();
-      }
-    }
-
-    for (let i = 0; i < particleCount; i++) {
-      particles.push(new Particle());
-    }
-
-    const animate = () => {
-      ctx.clearRect(0, 0, width, height);
-
-      for (let i = 0; i < particles.length; i++) {
-        particles[i].update();
-        particles[i].draw();
-
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-
-          if (dist < 110) {
-            ctx.beginPath();
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = `rgba(20, 184, 166, ${0.15 * (1 - dist / 110)})`;
-            ctx.lineWidth = 0.75;
-            ctx.stroke();
-          }
-        }
-      }
-
-      animationFrameId = requestAnimationFrame(animate);
-    };
-
-    animate();
-
-    return () => {
-      cancelAnimationFrame(animationFrameId);
-      if (parentSection) {
-        parentSection.removeEventListener("mousemove", handleMouseMove);
-        parentSection.removeEventListener("mouseleave", handleMouseLeave);
-      }
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
 
   return (
     <div>
       <style>{pageStyles}</style>
 
       {/* ══ HERO ══ */}
-      <section className="section hero-section-wrap">
-        <canvas className="hero-canvas" ref={canvasRef} />
+      <section className="section">
         <div className="container">
           <div className="grid grid-2 hero-grid" style={{ alignItems: "center", gap: "clamp(24px,4vw,40px)" }}>
             <div>
@@ -637,7 +503,7 @@ export default function Home() {
                 <span className="tw-word-block">{twWord}<span className="tw-cursor" aria-hidden="true" /></span>
               </h1>
               <p className="lead h-anim-3" style={{ marginTop: 16, maxWidth: "56ch" }}>
-                Flexible consulting, staffing, and data solutions designed to help you deliver results —
+                Technology consulting, staffing, and data solutions designed to help you deliver results —
                 without long-term overhead. We adapt to your needs, quickly and cost-effectively.
               </p>
               <div className="h-anim-4 btn-row" style={{ display: "flex", gap: 10, marginTop: 22, flexWrap: "wrap" }}>
@@ -651,7 +517,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
 
       {/* ══ SERVICES CAROUSEL ══ */}
       <ServicesCarousel />
