@@ -62,7 +62,7 @@ export default function ParticleBackground() {
             draw() {
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                ctx.fillStyle = "rgba(45, 212, 191, 0.6)";
+                ctx.fillStyle = "rgba(45, 212, 191, 0.5)";
                 ctx.fill();
             }
         }
