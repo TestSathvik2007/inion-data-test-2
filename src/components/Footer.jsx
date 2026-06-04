@@ -5,30 +5,19 @@ const nav = [
   {
     title: "Company",
     links: [
-      { label: "Home",    to: "/" },
-      { label: "About",   to: "/about" },
+      { label: "Home", to: "/" },
+      { label: "About", to: "/about" },
+      { label: "Services", to: "/services" },
       { label: "Careers", to: "/careers" },
-    ],
-  },
-  {
-    title: "Services",
-    links: [
-      { label: "AI Enablement", to: "/ai-enablement" },
-      { label: "App Development & Services", to: "/services/app-development" },
-      { label: "Project Management", to: "/services/project-management" },
-      { label: "Consulting Services", to: "/services/consulting" },
-      { label: "Fast Growth", to: "/services/fast-growth" },
-      { label: "Operational Efficiency", to: "/services/operational-efficiency" },
-      { label: "Data Engineering", to: "/services/data-engineering" },
-      { label: "IT Staffing Solutions", to: "/services/staffing" },
+      { label: "Contact", to: "/contact" },
     ],
   },
   {
     title: "Contact",
     items: [
-      { text: "7950 Legacy Dr, Suite 473, Plano, TX 75024",       href: null },
-      { text: "(424) 425-6499",     href: "tel:+14244256499" },
-      { text: "contact@iniondata.com",href: "mailto:contact@iniondata.com" },
+      { text: "7950 Legacy Dr, Suite 473, Plano, TX 75024", href: null },
+      { text: "(424) 425-6499", href: "tel:+14244256499" },
+      { text: "contact@iniondata.com", href: "mailto:contact@iniondata.com" },
     ],
   },
 ];
@@ -45,10 +34,10 @@ const footerStyles = `
     margin-top: clamp(40px, 8vh, 80px);
   }
 
-  /* ── Desktop: Full 4-column layout ── */
+  /* ── Desktop: 3-column layout ── */
   .footer__grid {
     display: grid;
-    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    grid-template-columns: 1.6fr 1fr 1.2fr;
     gap: clamp(24px, 4vw, 40px) clamp(20px, 3vw, 32px);
     align-items: start;
     padding: clamp(36px, 6vh, 56px) clamp(20px, 5vw, 60px);
@@ -103,7 +92,7 @@ const footerStyles = `
     line-height: 1.55;
     color: rgba(255, 255, 255, 0.45);
     margin-bottom: clamp(12px, 2vh, 16px);
-    max-width: 28ch;
+    max-width: 34ch;
   }
 
   /* ── Nav columns ── */
